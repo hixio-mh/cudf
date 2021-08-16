@@ -105,7 +105,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.9</version>
+            <version>1.7.32</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -336,18 +336,14 @@
                         <configuration>
                             <tasks>
                                 <mkdir dir="${native.build.path}"/>
-                                <exec dir="${native.build.path}"
-                                      failonerror="true"
-                                      executable="cmake">
+                                <exec dir="${native.build.path}" failonerror="true" executable="cmake">
                                     <arg value="${basedir}/src/main/native"/>
-                                    <arg value="-DCUDA_STATIC_RUNTIME=${CUDA_STATIC_RUNTIME}" />
-                                    <arg value="-DPER_THREAD_DEFAULT_STREAM=${PER_THREAD_DEFAULT_STREAM}" />
+                                    <arg value="-DCUDA_STATIC_RUNTIME=${CUDA_STATIC_RUNTIME}"/>
+                                    <arg value="-DPER_THREAD_DEFAULT_STREAM=${PER_THREAD_DEFAULT_STREAM}"/>
                                     <arg value="-DCMAKE_CXX11_ABI=${cxx11.abi.value}"/>
                                     <arg value="-DCMAKE_CXX_FLAGS=${cxx.flags}"/>
                                 </exec>
-                                <exec dir="${native.build.path}"
-                                      failonerror="true"
-                                      executable="make">
+                                <exec dir="${native.build.path}" failonerror="true" executable="make">
                                     <arg value="-j"/>
                                 </exec>
                                 <mkdir dir="${project.build.directory}/extra-resources"/>
